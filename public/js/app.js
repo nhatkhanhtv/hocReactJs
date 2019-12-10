@@ -89210,11 +89210,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+// require('./components/HocVeState');
+// require('./components/HocVeAxios');
 
 
-__webpack_require__(/*! ./components/HocVeState */ "./resources/js/components/HocVeState.js");
-
-__webpack_require__(/*! ./components/HocVeAxios */ "./resources/js/components/HocVeAxios.js");
+__webpack_require__(/*! ./components/HocVeThaoTacDuLieu */ "./resources/js/components/HocVeThaoTacDuLieu.js");
 
 /***/ }),
 
@@ -89263,22 +89263,126 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/components/HocVeAxios.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/HocVeAxios.js ***!
-  \***********************************************/
+/***/ "./resources/js/components/HocVeThaoTacDuLieu.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/HocVeThaoTacDuLieu.js ***!
+  \*******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HocVeAxios; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HocVeThaoTacDuLieu; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
-/* harmony import */ var _material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/TextField */ "./node_modules/@material-ui/core/esm/TextField/index.js");
+/* harmony import */ var _ThaoTacDuLieu_ListData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ThaoTacDuLieu/ListData */ "./resources/js/components/ThaoTacDuLieu/ListData.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
+/* harmony import */ var _material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @material-ui/core/TextField */ "./node_modules/@material-ui/core/esm/TextField/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+
+var url = '/api/post';
+
+var HocVeThaoTacDuLieu =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(HocVeThaoTacDuLieu, _Component);
+
+  function HocVeThaoTacDuLieu() {
+    _classCallCheck(this, HocVeThaoTacDuLieu);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(HocVeThaoTacDuLieu).apply(this, arguments));
+  }
+
+  _createClass(HocVeThaoTacDuLieu, [{
+    key: "render",
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         numberOne: '',
+    //         value2:'',
+    //         responseData:"",
+    //       //  listPost:[]
+    //     };
+    //     this.handleChange = this.handleChange.bind(this);
+    //     this.handleChange2 = this.handleChange2.bind(this);
+    //     this.handleSubmit = this.handleSubmit.bind(this);
+    //   }
+    //   handleChange(event) {
+    //     this.setState({numberOne: event.target.value});
+    //   }
+    //   handleChange2(event) {
+    //     this.setState({value2: event.target.value});
+    //   }
+    //   handleSubmit(event) {
+    //     axios({
+    //       method: 'post',
+    //       url: '/post/noiChuoiTest',
+    //       data: { 
+    //         text1:this.state.numberOne,
+    //         text2:this.state.value2
+    //       }
+    //     }).then(res => {
+    //       //const persons = res.data;
+    //       this.setState({ responseData:res.data });
+    //     })
+    //     .catch(error => console.log(error));
+    //     event.preventDefault();
+    //   }
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ThaoTacDuLieu_ListData__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        url: url
+      }));
+    }
+  }]);
+
+  return HocVeThaoTacDuLieu;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+
+
+if (document.getElementById('axios')) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(HocVeThaoTacDuLieu, null), document.getElementById('axios'));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/ThaoTacDuLieu/InputData.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/ThaoTacDuLieu/InputData.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return InputData; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -89300,77 +89404,155 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
-var url = '/admin/post';
-
-var HocVeAxios =
+var InputData =
 /*#__PURE__*/
-function (_Component) {
-  _inherits(HocVeAxios, _Component);
+function (_React$Component) {
+  _inherits(InputData, _React$Component);
 
-  function HocVeAxios(props) {
+  function InputData(props) {
     var _this;
 
-    _classCallCheck(this, HocVeAxios);
+    _classCallCheck(this, InputData);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(HocVeAxios).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(InputData).call(this, props));
     _this.state = {
-      numberOne: '',
-      value2: '',
-      responseData: "",
-      listPost: []
+      title: "",
+      content: "",
+      stateChange: false
     };
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleChange2 = _this.handleChange2.bind(_assertThisInitialized(_this));
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleChangeTitle = _this.handleChangeTitle.bind(_assertThisInitialized(_this));
+    _this.handleChangeContent = _this.handleChangeContent.bind(_assertThisInitialized(_this));
     return _this;
   }
 
-  _createClass(HocVeAxios, [{
-    key: "handleChange",
-    value: function handleChange(event) {
-      this.setState({
-        numberOne: event.target.value
-      });
-    }
-  }, {
-    key: "handleChange2",
-    value: function handleChange2(event) {
-      this.setState({
-        value2: event.target.value
-      });
-    }
-  }, {
+  _createClass(InputData, [{
     key: "handleSubmit",
     value: function handleSubmit(event) {
-      var _this2 = this;
+      var url = this.props.url + "/store"; //if(!this.state.stateChange) {
 
       axios({
-        method: 'post',
-        url: '/post/noiChuoiTest',
+        method: 'put',
+        url: url,
         data: {
-          text1: this.state.numberOne,
-          text2: this.state.value2
+          title: this.state.title,
+          content: this.state.content
         }
       }).then(function (res) {
         //const persons = res.data;
-        _this2.setState({
-          responseData: res.data
-        });
+        //this.setState({ responseData:res.data });
+        console.log('ok');
       })["catch"](function (error) {
         return console.log(error);
-      });
+      }); //} 
+
       event.preventDefault();
     }
   }, {
+    key: "handleChangeTitle",
+    value: function handleChangeTitle(event) {
+      this.setState({
+        title: event.target.value
+      });
+    }
+  }, {
+    key: "handleChangeContent",
+    value: function handleChangeContent(event) {
+      this.setState({
+        content: event.target.value
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Title", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.title,
+        onChange: this.handleChangeTitle
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Content", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        multiline: "multiline",
+        value: this.state.content,
+        onChange: this.handleChangeContent
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "submit",
+        value: "Submit"
+      }));
+    }
+  }]);
+
+  return InputData;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ThaoTacDuLieu/ListData.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/ThaoTacDuLieu/ListData.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return ListData; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _InputData__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./InputData */ "./resources/js/components/ThaoTacDuLieu/InputData.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+
+var ListData =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(ListData, _React$Component);
+
+  function ListData(props) {
+    var _this;
+
+    _classCallCheck(this, ListData);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ListData).call(this, props));
+    _this.state = {
+      listPost: []
+    };
+    return _this;
+  }
+
+  _createClass(ListData, [{
     key: "listViewReload",
     value: function listViewReload() {
-      var _this3 = this;
+      var _this2 = this;
 
-      axios.get(url).then(function (res) {
+      axios.get(this.props.url).then(function (res) {
         var listPost = res.data;
 
-        _this3.setState({
+        _this2.setState({
           listPost: listPost
         });
       })["catch"](function (error) {
@@ -89385,152 +89567,22 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.numberOne,
-        onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Username:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.value2,
-        onChange: this.handleChange2
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Submit"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Response:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.responseData,
-        readOnly: true
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "list-data"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.listPost.map(function (post) {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_InputData__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        url: this.props.url
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.state.listPost.map(function (post) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
           key: post.id
         }, post.title);
-      }))));
+      })));
     }
   }]);
 
-  return HocVeAxios;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+  return ListData;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 
-
-if (document.getElementById('axios')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(HocVeAxios, null), document.getElementById('axios'));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/HocVeState.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/HocVeState.js ***!
-  \***********************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return HocVeState; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
-/* harmony import */ var _material_ui_core_TextField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @material-ui/core/TextField */ "./node_modules/@material-ui/core/esm/TextField/index.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-
-
-
-
-
-var HocVeState =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(HocVeState, _Component);
-
-  function HocVeState(props) {
-    var _this;
-
-    _classCallCheck(this, HocVeState);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(HocVeState).call(this, props));
-    _this.state = {
-      numberOne: '',
-      value2: ''
-    };
-    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
-    _this.handleChange2 = _this.handleChange2.bind(_assertThisInitialized(_this));
-    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(HocVeState, [{
-    key: "handleChange",
-    value: function handleChange(event) {
-      this.setState({
-        numberOne: event.target.value
-      });
-    }
-  }, {
-    key: "handleChange2",
-    value: function handleChange2(event) {
-      this.setState({
-        value2: event.target.value
-      });
-    }
-  }, {
-    key: "handleSubmit",
-    value: function handleSubmit(event) {
-      alert('A name was submitted: ' + this.state.numberOne + ' a username: ' + this.state.value2);
-      event.preventDefault();
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Name:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.numberOne,
-        onChange: this.handleChange
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Username:", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
-        value: this.state.value2,
-        onChange: this.handleChange2
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "submit",
-        value: "Submit"
-      }));
-    }
-  }]);
-
-  return HocVeState;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-
-
-if (document.getElementById('example')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(HocVeState, null), document.getElementById('example'));
-}
 
 /***/ }),
 
@@ -89552,8 +89604,8 @@ if (document.getElementById('example')) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\wamp64\www\blog_react\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\wamp64\www\blog_react\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\hocReactJs\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\hocReactJs\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

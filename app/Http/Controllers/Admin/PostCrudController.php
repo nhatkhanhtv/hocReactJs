@@ -51,6 +51,8 @@ class PostCrudController extends CrudController
         return $redirect_location;
     }
 
+    
+
     public function update(UpdateRequest $request)
     {
         // your additional operations before save here

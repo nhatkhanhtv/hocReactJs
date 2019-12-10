@@ -12,5 +12,6 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-require('./components/HocVeState');
-require('./components/HocVeAxios');
+// require('./components/HocVeState');
+// require('./components/HocVeAxios');
+require('./components/HocVeThaoTacDuLieu');
