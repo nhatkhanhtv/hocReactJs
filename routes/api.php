@@ -24,6 +24,7 @@ Route::group([
     // CRUD resources and other admin routes
     
    CRUD::resource('/post', 'PostController');
+   Route::post('/post/store','PostController@store');
 //    CRUD::resource('/groups', 'GroupController');
 //    Route::post('/dynamic-form', 'ContactController@dynamicForm');
 

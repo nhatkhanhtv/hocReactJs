@@ -19,7 +19,7 @@ export default class InputData extends React.Component{
         const url = this.props.url + "/store";
         //if(!this.state.stateChange) {
             axios({
-                method: 'put',
+                method: 'post',
                 url: url,
                 data: { 
                   title:this.state.title,

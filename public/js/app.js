@@ -89432,7 +89432,7 @@ function (_React$Component) {
       var url = this.props.url + "/store"; //if(!this.state.stateChange) {
 
       axios({
-        method: 'put',
+        method: 'post',
         url: url,
         data: {
           title: this.state.title,
