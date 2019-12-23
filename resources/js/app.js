@@ -14,4 +14,5 @@ require('./bootstrap');
 
 // require('./components/HocVeState');
 // require('./components/HocVeAxios');
-require('./components/HocVeThaoTacDuLieu');
+//require('./components/HocVeThaoTacDuLieu');
+require('./components/HocVeThaoTacDuLieuArrowFunction');

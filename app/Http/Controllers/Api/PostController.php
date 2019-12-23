@@ -54,24 +54,43 @@ class PostController extends Controller
         return $data;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $post = Post::select('title', 'id','content')->get();
-        return response()->json($post);
+        $search_term = $request->input('searchQuery');
+        $rowsPerPage = $request->per_page;
+        
+        if ($search_term!="undefined") {
+            $results = Post::select('*')->where('title', 'LIKE', '%'.$search_term.'%')->orderBy('id','desc')->paginate($rowsPerPage);
+        } else {
+            $results = Post::select('*')->orderBy('id','desc')->paginate($rowsPerPage);
+        }
+
+        return $results;
+        //return response()->json($post);
     }
 
-    public function update(Request $request)
-    {
-        var_dump(1);
-       /*
+    public function update(Request $request,$id)
+    {    
         $data=$request->all();
         
-        $contact=Post::find($id);
-
-        $data=$contact->update($data);
+        $post=Post::find($id);
         
+        $data=$post->update($data);      
         
 
-        return Post::find($id);*/ return "";
+        return Post::find($id);
+    }
+
+    public function show($id)
+    {
+        var_dump(2);
+    }
+
+    public function destroy(Request $request, $id)
+    {
+        $data = $request->all();
+        $post = Post::find($id)->delete();
+        return Post::all();
+
     }
 }

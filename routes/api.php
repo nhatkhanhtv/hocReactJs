@@ -25,6 +25,8 @@ Route::group([
     
    CRUD::resource('/post', 'PostController');
    Route::post('/post/store','PostController@store');
+   
+  // Route::put('/post/update/{id}','PostController@store');
 //    CRUD::resource('/groups', 'GroupController');
 //    Route::post('/dynamic-form', 'ContactController@dynamicForm');
 
