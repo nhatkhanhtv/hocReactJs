@@ -114043,9 +114043,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_icons_KeyboardArrowRight__WEBPACK_IMPORTED_MODULE_16___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_KeyboardArrowRight__WEBPACK_IMPORTED_MODULE_16__);
 /* harmony import */ var _material_ui_icons_LastPage__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @material-ui/icons/LastPage */ "./node_modules/@material-ui/icons/LastPage.js");
 /* harmony import */ var _material_ui_icons_LastPage__WEBPACK_IMPORTED_MODULE_17___default = /*#__PURE__*/__webpack_require__.n(_material_ui_icons_LastPage__WEBPACK_IMPORTED_MODULE_17__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_18___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_18__);
-/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
+/* harmony import */ var _material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @material-ui/core/Dialog */ "./node_modules/@material-ui/core/esm/Dialog/index.js");
+/* harmony import */ var _material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @material-ui/core/DialogActions */ "./node_modules/@material-ui/core/esm/DialogActions/index.js");
+/* harmony import */ var _material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @material-ui/core/DialogContent */ "./node_modules/@material-ui/core/esm/DialogContent/index.js");
+/* harmony import */ var _material_ui_core_DialogContentText__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @material-ui/core/DialogContentText */ "./node_modules/@material-ui/core/esm/DialogContentText/index.js");
+/* harmony import */ var _material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @material-ui/core/DialogTitle */ "./node_modules/@material-ui/core/esm/DialogTitle/index.js");
+/* harmony import */ var _material_ui_core_Slide__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @material-ui/core/Slide */ "./node_modules/@material-ui/core/esm/Slide/index.js");
+/* harmony import */ var _material_ui_core_Button__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @material-ui/core/Button */ "./node_modules/@material-ui/core/esm/Button/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_25___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_25__);
+/* harmony import */ var _material_ui_core__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @material-ui/core */ "./node_modules/@material-ui/core/esm/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -114059,6 +114066,15 @@ function _nonIterableRest() { throw new TypeError("Invalid attempt to destructur
 function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+
+
+
 
 
 
@@ -114106,39 +114122,66 @@ var url_api = '/api/post'; // function getApiData(){
 //     .catch(error=>{console.log(error)});
 // }
 
+var Transition = react__WEBPACK_IMPORTED_MODULE_0___default.a.forwardRef(function Transition(props, ref) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Slide__WEBPACK_IMPORTED_MODULE_23__["default"], _extends({
+    direction: "up",
+    ref: ref
+  }, props));
+});
 function CustomPaginationActionsTable() {
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
-      _useState2 = _slicedToArray(_useState, 2),
-      onload = _useState2[0],
-      setOnload = _useState2[1]; //set false de ngung tu load cho useEffect
-
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-      _useState4 = _slicedToArray(_useState3, 2),
-      rows = _useState4[0],
-      setRows = _useState4[1];
-
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(null),
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(false),
       _React$useState2 = _slicedToArray(_React$useState, 2),
-      rowDataIndex = _React$useState2[0],
-      setRowDataIndex = _React$useState2[1];
+      openDialog = _React$useState2[0],
+      setOpenDialog = _React$useState2[1];
 
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState([]),
+  var classes = useStyles2(); //const [onload,setOnload] = useState(true); //set false de ngung tu load cho useEffect
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      rows = _useState2[0],
+      setRows = _useState2[1];
+
+  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(null),
       _React$useState4 = _slicedToArray(_React$useState3, 2),
-      dataTable = _React$useState4[0],
-      setDataTable = _React$useState4[1];
+      rowDataIndex = _React$useState4[0],
+      setRowDataIndex = _React$useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      openForm = _useState4[0],
+      setOpenForm = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(0),
       _useState6 = _slicedToArray(_useState5, 2),
-      search = _useState6[0],
-      setSearch = _useState6[1];
+      rowIndex = _useState6[0],
+      setRowIndex = _useState6[1];
 
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState([]),
+      _React$useState6 = _slicedToArray(_React$useState5, 2),
+      dataTable = _React$useState6[0],
+      setDataTable = _React$useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+      _useState8 = _slicedToArray(_useState7, 2),
+      search = _useState8[0],
+      setSearch = _useState8[1];
+
+  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(0),
+      _React$useState8 = _slicedToArray(_React$useState7, 2),
+      page = _React$useState8[0],
+      setPage = _React$useState8[1];
+
+  var _React$useState9 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(5),
+      _React$useState10 = _slicedToArray(_React$useState9, 2),
+      rowsPerPage = _React$useState10[0],
+      setRowsPerPage = _React$useState10[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
     from: '',
     current_page: 0,
     to: '',
     total: '',
-    per_page: 5,
+    per_page: 2,
     last_page: '',
     next_page_url: '',
     first_page_url: '',
@@ -114147,9 +114190,9 @@ function CustomPaginationActionsTable() {
     // rowsPerPage:10
 
   }),
-      _useState8 = _slicedToArray(_useState7, 2),
-      state = _useState8[0],
-      setState = _useState8[1]; // useEffect(() => {
+      _useState10 = _slicedToArray(_useState9, 2),
+      state = _useState10[0],
+      setState = _useState10[1]; // useEffect(() => {
   //   if(onload) {
   //     axios.get(url)
   //     .then(res=>{
@@ -114161,23 +114204,16 @@ function CustomPaginationActionsTable() {
   // });
 
 
-  var classes = useStyles2();
-
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(0),
-      _React$useState6 = _slicedToArray(_React$useState5, 2),
-      page = _React$useState6[0],
-      setPage = _React$useState6[1];
-
-  var _React$useState7 = react__WEBPACK_IMPORTED_MODULE_0___default.a.useState(5),
-      _React$useState8 = _slicedToArray(_React$useState7, 2),
-      rowsPerPage = _React$useState8[0],
-      setRowsPerPage = _React$useState8[1];
-
   var emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   function getServerData(url) {
     axios.get(url).then(function (json) {
       var response = json.data;
+
+      if (response.current_page > response.last_page) {
+        response.current_page = response.last_page;
+      }
+
       setState({
         from: response.from,
         current_page: response.current_page - 1,
@@ -114202,36 +114238,107 @@ function CustomPaginationActionsTable() {
 
   var handleTextChange = function handleTextChange(key) {
     return function (event) {
-      set(_objectSpread({}, rowDataIndex, _defineProperty({}, key, event.target.value)));
-      if (event.target.value.length == 0) setValidate({
-        rules: {
-          name: {
-            required: true
-          }
-        },
-        message: {
-          name: {
-            required: 'this field is required'
-          }
-        }
-      });else setValidate({
-        rules: {
-          name: {
-            required: false
-          }
-        },
-        message: {
-          name: {
-            required: ''
-          }
-        }
-      }); //rowDataIndex[name]=event.target.value;
+      setRowDataIndex(_objectSpread({}, rowDataIndex, _defineProperty({}, key, event.target.value))); // if(event.target.value.length==0)
+      //   setValidate({
+      //     rules: {
+      //         name : {
+      //             required : true
+      //         }
+      //       },
+      //       message:{
+      //         name : {
+      //             required : 'this field is required'
+      //         }
+      //       },
+      //   });
+      // else setValidate({
+      //     rules: {
+      //         name : {
+      //             required : false
+      //         }
+      //       },
+      //       message:{
+      //         name : {
+      //             required : ''
+      //         }
+      //       },
+      //   });
+      //rowDataIndex[name]=event.target.value;
     };
   };
 
-  function handleClickEdit(e, row) {}
+  function handleClickEdit(e, row) {
+    setRowIndex(row.id);
+    setRowDataIndex(row);
+    setOpenForm(true);
+  }
 
-  function handleClickDelete(e, row) {}
+  var handleOpenDeleteDialog = function handleOpenDeleteDialog(id) {
+    setOpenDialog(true);
+    setRowIndex(id);
+  };
+
+  var handleCloseDeleteDialog = function handleCloseDeleteDialog() {
+    setOpenDialog(false);
+  };
+
+  function handleClickDelete() {
+    var current_page = state.current_page + 1;
+    console.log(current_page);
+    axios({
+      method: "DELETE",
+      url: url_api + "/" + rowIndex,
+      data: {
+        per_page: state.per_page,
+        searchQuery: search
+      }
+    }).then(function (json) {
+      var response = json.data;
+
+      if (current_page > response.last_page) {
+        getServerData(url_api + '?page=' + response.last_page.toString() + '&per_page=' + state.per_page.toString() + '&searchQuery=' + search);
+      } else {
+        getServerData(url_api + '?page=' + current_page.toString() + '&per_page=' + state.per_page.toString() + '&searchQuery=' + search);
+      }
+
+      handleCloseDeleteDialog();
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  }
+
+  function clearForm() {
+    setOpenForm(false);
+    setRowIndex(0);
+    setRowDataIndex(null);
+  }
+
+  function handleClickDoneUpdate(e) {
+    var row = rowDataIndex;
+    axios.put(url_api + "/" + row.id, {
+      title: row.title,
+      content: row.content
+    }).then(function (json) {
+      var response = json.data;
+      var list = dataTable;
+
+      for (var i = 0; i < list.length; i++) {
+        if (list[i].id == response.id) {
+          list[i] = response;
+        }
+      }
+
+      setDataTable(list);
+      clearForm();
+    })["catch"](function (error) {
+      console.log(error);
+    });
+    e.preventDefault();
+  }
+
+  function handleCancel(e, row) {
+    clearForm();
+  }
 
   function renderText(row) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -114251,7 +114358,7 @@ function CustomPaginationActionsTable() {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_12___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_11__["default"], {
       "aria-label": "Delete",
       onClick: function onClick(e) {
-        return handleClickOpen(e, row.id);
+        return handleOpenDeleteDialog(row.id);
       }
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_13___default.a, null))));
   }
@@ -114262,15 +114369,25 @@ function CustomPaginationActionsTable() {
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], {
       component: "th",
       scope: "row"
-    }, row.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__["TextField"], {
+    }, row.id), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_26__["TextField"], {
       defaultValue: row ? row.title : "",
       onChange: handleTextChange('title'),
       required: true
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_19__["TextField"], {
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core__WEBPACK_IMPORTED_MODULE_26__["TextField"], {
       defaultValue: row ? row.content : "",
       onChange: handleTextChange('content'),
       required: true
-    })));
+    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableCell__WEBPACK_IMPORTED_MODULE_6__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      "aria-label": "Dont",
+      onClick: function onClick(e) {
+        return handleClickDoneUpdate(e, row);
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Edit__WEBPACK_IMPORTED_MODULE_12___default.a, null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_IconButton__WEBPACK_IMPORTED_MODULE_11__["default"], {
+      "aria-label": "Cancel",
+      onClick: function onClick(e) {
+        return handleCancel(e, row.id);
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_icons_Delete__WEBPACK_IMPORTED_MODULE_13___default.a, null))));
   }
 
   function TablePaginationActions(props) {
@@ -114354,11 +114471,11 @@ function CustomPaginationActionsTable() {
     getServerData(url);
   }
 
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_4__["default"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Paper__WEBPACK_IMPORTED_MODULE_10__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Table__WEBPACK_IMPORTED_MODULE_4__["default"], {
     className: classes.table,
     "aria-label": "custom pagination table"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableBody__WEBPACK_IMPORTED_MODULE_5__["default"], null, dataTable.map(function (row) {
-    return renderText(row);
+    return row.id == rowIndex && openForm ? renderForm(row) : renderText(row);
   }), emptyRows > 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_TableRow__WEBPACK_IMPORTED_MODULE_9__["default"], {
     style: {
       height: 53 * emptyRows
@@ -114383,7 +114500,24 @@ function CustomPaginationActionsTable() {
     onChangePage: handleChangePage,
     onChangeRowsPerPage: handleChangeRowsPerPage,
     ActionsComponent: TablePaginationActions
-  }))));
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Dialog__WEBPACK_IMPORTED_MODULE_18__["default"], {
+    open: openDialog,
+    TransitionComponent: Transition,
+    keepMounted: true,
+    onClose: handleCloseDeleteDialog,
+    "aria-labelledby": "alert-dialog-slide-title",
+    "aria-describedby": "alert-dialog-slide-description"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogTitle__WEBPACK_IMPORTED_MODULE_22__["default"], {
+    id: "alert-dialog-slide-title"
+  }, "Delete Post"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContent__WEBPACK_IMPORTED_MODULE_20__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogContentText__WEBPACK_IMPORTED_MODULE_21__["default"], {
+    id: "alert-dialog-slide-description"
+  }, "Delete?")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_DialogActions__WEBPACK_IMPORTED_MODULE_19__["default"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_24__["default"], {
+    onClick: handleCloseDeleteDialog,
+    color: "primary"
+  }, "Disagree"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_material_ui_core_Button__WEBPACK_IMPORTED_MODULE_24__["default"], {
+    onClick: handleClickDelete,
+    color: "primary"
+  }, "Agree"))));
 }
 
 if (document.getElementById('axios')) {

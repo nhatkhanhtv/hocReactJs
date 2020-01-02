@@ -17,6 +17,13 @@ import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Slide from '@material-ui/core/Slide';
+import Button from '@material-ui/core/Button';
 //import TablePaginationActions from './TablePaginationActions';
 import Axios from 'axios';
 import { TextField } from '@material-ui/core';
@@ -52,18 +59,30 @@ const url_api = '/api/post';
 //     })
 //     .catch(error=>{console.log(error)});
 // }
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
+
 export default function CustomPaginationActionsTable() { 
-  const [onload,setOnload] = useState(true); //set false de ngung tu load cho useEffect
+  const [openDialog, setOpenDialog] = React.useState(false);
+  const classes = useStyles2();
+  //const [onload,setOnload] = useState(true); //set false de ngung tu load cho useEffect
   const [rows,setRows] = useState([]); 
   const [rowDataIndex,setRowDataIndex] = React.useState(null);
+  const [openForm,setOpenForm] = useState(false);
+  const [rowIndex,setRowIndex] = useState(0);
   const [dataTable,setDataTable] = React.useState([]);
   const [search,setSearch]=useState("");
+  
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [state,setState] = useState({
     from:'',
     current_page:0,
     to:'',
     total:'',
-    per_page:5,
+    per_page:2,
     
     last_page:'',    
     next_page_url:'',
@@ -85,15 +104,16 @@ export default function CustomPaginationActionsTable() {
   //   }
     
   // });
-  const classes = useStyles2();
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
   
   function getServerData(url){
     axios.get(url).then(json=>{
       let response = json.data;
+      if(response.current_page > response.last_page) {
+        response.current_page = response.last_page;
+      }
       setState({        
         from:response.from,
         current_page:response.current_page-1,
@@ -121,45 +141,106 @@ export default function CustomPaginationActionsTable() {
 
 
   const handleTextChange = key => event => {
-    set ({ ...rowDataIndex, [key]: event.target.value });
-    if(event.target.value.length==0)
-      setValidate({
+    setRowDataIndex ({ ...rowDataIndex, [key]: event.target.value });
+    // if(event.target.value.length==0)
+    //   setValidate({
         
-        rules: {
-            name : {
-                required : true
-            }
-          },
-          message:{
-            name : {
-                required : 'this field is required'
-            }
-          },
+    //     rules: {
+    //         name : {
+    //             required : true
+    //         }
+    //       },
+    //       message:{
+    //         name : {
+    //             required : 'this field is required'
+    //         }
+    //       },
         
         
-      });
-    else setValidate({
-        rules: {
-            name : {
-                required : false
-            }
-          },
-          message:{
-            name : {
-                required : ''
-            }
-          },
-      });
+    //   });
+    // else setValidate({
+    //     rules: {
+    //         name : {
+    //             required : false
+    //         }
+    //       },
+    //       message:{
+    //         name : {
+    //             required : ''
+    //         }
+    //       },
+    //   });
     //rowDataIndex[name]=event.target.value;
 
   };
 
   function handleClickEdit(e,row){
-
+    setRowIndex(row.id);
+    setRowDataIndex(row);
+    setOpenForm(true);
   }
 
-  function handleClickDelete(e,row){
-    
+  const handleOpenDeleteDialog = (id) => {
+    setOpenDialog(true);
+    setRowIndex(id);
+  }
+
+  const handleCloseDeleteDialog = () => {
+    setOpenDialog(false);
+  }
+
+  function handleClickDelete(){
+    const current_page = state.current_page +1 ;
+    console.log(current_page);
+    axios({
+      method:"DELETE",
+      url:url_api+"/"+rowIndex,
+      data:{
+        per_page:state.per_page,
+        searchQuery:search
+      }
+    }).then(json=>{
+      let response = json.data;
+
+      if(current_page>response.last_page){
+        getServerData(url_api+'?page='+response.last_page.toString()+'&per_page='+state.per_page.toString()+'&searchQuery='+search);
+      } else {
+        getServerData(url_api+'?page='+current_page.toString()+'&per_page='+state.per_page.toString()+'&searchQuery='+search);
+      }
+
+      handleCloseDeleteDialog();
+    }).catch(error=>{console.log(error)});
+  }
+
+  function clearForm(){
+    setOpenForm(false);
+    setRowIndex(0);
+    setRowDataIndex(null);
+  }
+
+  function handleClickDoneUpdate(e) {
+    let row = rowDataIndex;
+    axios.put(url_api+"/"+row.id,{
+      title:row.title,
+      content:row.content
+    }).then(json=>{
+      let response = json.data;
+      let list = dataTable;
+      for(let i=0;i<list.length;i++){
+        if(list[i].id == response.id){
+          list[i] = response;
+        }
+      }
+      setDataTable(list);
+      clearForm();
+    }).catch(error=>{
+      console.log(error);
+    })
+    e.preventDefault();
+  }
+
+  function handleCancel(e,row){
+    clearForm();
   }
 
   function renderText(row){
@@ -174,7 +255,7 @@ export default function CustomPaginationActionsTable() {
           <IconButton aria-label="Edit" onClick={(e)=>handleClickEdit(e,row)}>
             <EditIcon />
           </IconButton>
-          <IconButton aria-label="Delete" onClick={(e)=>handleClickOpen(e,row.id)}>
+          <IconButton aria-label="Delete" onClick={(e)=>handleOpenDeleteDialog(row.id)}>
             <DeleteIcon />
           </IconButton>
         </TableCell>
@@ -204,6 +285,14 @@ export default function CustomPaginationActionsTable() {
           required={true}
         />
       </TableCell>  
+      <TableCell>
+          <IconButton aria-label="Dont" onClick={(e)=>handleClickDoneUpdate(e,row)}>
+            <EditIcon />
+          </IconButton>
+          <IconButton aria-label="Cancel" onClick={(e)=>handleCancel(e,row.id)}>
+            <DeleteIcon />
+          </IconButton>
+        </TableCell>
     </TableRow>
     );
   }
@@ -299,7 +388,7 @@ rowsPerPage: PropTypes.number.isRequired,
 
 
   return (
-    
+    <Paper>
       <Table className={classes.table} aria-label="custom pagination table">
         <TableBody>
           {/* {(rowsPerPage > 0
@@ -315,8 +404,9 @@ rowsPerPage: PropTypes.number.isRequired,
             // </TableRow>
             renderText(row)
           ))}  */}
-
+ 
           {dataTable.map(row=>(
+            (row.id == rowIndex && openForm) ?renderForm(row) :
             renderText(row)
             ))}
 
@@ -345,6 +435,30 @@ rowsPerPage: PropTypes.number.isRequired,
           </TableRow>
         </TableFooter>
       </Table>
+      <Dialog
+      open={openDialog}
+      TransitionComponent={Transition}
+      keepMounted
+      onClose={handleCloseDeleteDialog}
+      aria-labelledby="alert-dialog-slide-title"
+      aria-describedby="alert-dialog-slide-description"
+    >
+      <DialogTitle id="alert-dialog-slide-title">{"Delete Post"}</DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-slide-description">
+          Delete?
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleCloseDeleteDialog} color="primary">
+          Disagree
+        </Button>
+        <Button onClick={handleClickDelete} color="primary">
+          Agree
+        </Button>
+      </DialogActions>
+    </Dialog>
+    </Paper>
   );
 }
 

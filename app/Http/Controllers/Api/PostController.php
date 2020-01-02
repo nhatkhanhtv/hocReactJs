@@ -90,7 +90,18 @@ class PostController extends Controller
     {
         $data = $request->all();
         $post = Post::find($id)->delete();
-        return Post::all();
+
+        $search_term = $request->input('searchQuery');
+        $rowsPerPage = $request->per_page;
+        
+        if ($search_term!="undefined") {
+            $results = Post::select('*')->where('title', 'LIKE', '%'.$search_term.'%')->orderBy('id','desc')->paginate($rowsPerPage);
+        } else {
+            $results = Post::select('*')->orderBy('id','desc')->paginate($rowsPerPage);
+        }
+
+        
+        return $results;
 
     }
 }
